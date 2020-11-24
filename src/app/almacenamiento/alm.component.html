@@ -1,0 +1,32 @@
+<div class="section">
+    <div class="container">
+        <div class="row-md-12">
+          <div class="row">
+              <div class="product col-md-3" *ngFor="let producto of listaProductos">
+                <div class="product-img">
+                  <img src=".{{producto.photopath}}" alt="">
+                  <div class="product-label" *ngIf="producto.descuento > 0">
+                        <span class="sale">-{{producto.descuento | percent}}</span>
+                        <span class="new">Nuevo</span>
+                  </div>
+                </div>
+                <div class="product-body">
+                  <p class="product-category">{{producto.categoria}}</p>
+                  <h3 class="product-name"><a href="#">{{producto.nombre}}</a></h3>
+                  <h4 class="product-price" *ngIf="producto.descuento > 0; else sinDescuento">{{producto.precio*(1-producto.descuento) | currency}} <del class="product-old-price">{{producto.precio | currency}}</del></h4>
+                  <h4 class="product-price" *ngIf="producto.descuento == 0; else sinDescuento">{{producto.precio | currency}}</h4>
+                  <div class="product-rating">
+                  </div>
+                  <div class="product-btns">
+                    <!-- <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">vista rápida</span></button> -->
+                  </div>
+                </div>
+                <div class="add-to-cart">
+                  <button class="add-to-cart-btn" (click)="agregarProducto(producto)"><i class="fa fa-shopping-cart"></i> agregar al carrito</button>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <notifier-container></notifier-container>

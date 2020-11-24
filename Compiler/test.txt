@@ -1,0 +1,3 @@
+class algo{
+    System.in.readln("hola");
+}

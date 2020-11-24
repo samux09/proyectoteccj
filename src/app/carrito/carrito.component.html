@@ -1,0 +1,32 @@
+<div class="section">
+  <div class="container">
+    <div class="cart-list">
+      <div class="product-widget" *ngFor="let producto of obtenerCarrito()">
+        <div class="product-img">
+          <img src=".{{producto.photopath}}" alt="">
+        </div>
+        <div class="product-body">
+          <h3 class="product-name"><a href="#">{{producto.nombre}}</a></h3>
+
+          <h4 class="product-price">
+            <div class="input-group" style="margin-bottom: 25px; width: 100%;">
+              <button class="input-group-addon" (click)="disminuir(producto.idproducto);"><i class="fa fa-minus" aria-hidden="true"></i></button>
+              <span class="qty"><input type="text" class="input" #inputQnt readonly
+                  value="{{producto.cantidad}}" /><button class="input-group-addon" (click)="aumentar(producto.idproducto);"><i class="fa fa-plus" aria-hidden="true"></i></button></span>{{(producto.cantidad * producto.precio)*(1-producto.descuento) | currency}}
+            </div>
+          </h4>
+
+        </div>
+        <button class="delete" (click)="this.carrito.eliminarArticulo(producto.idproducto)"><i class="fa fa-close"></i></button>
+        <hr>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <h5>SUBTOTAL: {{obtenerSubtotal() | currency}}</h5>
+    </div>
+    <div class="cart-btns">
+        <a [routerLink]="['/procesopago']" (click)="desplegar(drop, drop2)">Pagar <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+
+</div>

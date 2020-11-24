@@ -1,0 +1,10 @@
+#titulo {
+	padding-top:10px;
+	color:white;
+}
+
+.tabs{
+	background: transparent;
+    border: none !important;
+    font-size:0;
+}

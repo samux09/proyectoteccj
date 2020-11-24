@@ -1,0 +1,20 @@
+<nav id="navigation">
+
+  <div class="container">
+
+    <div id="responsive-nav">
+
+      <ul class="main-nav nav navbar-nav">
+        <li (click)="changeActiveMenu(menuInicio);" #menuInicio class="active" id ="inicioID"><a [routerLink]="['/inicio']">Inicio</a></li>
+        <li (click)="changeActiveMenu(menuPromo);" #menuPromo><a [routerLink]="['/promociones']">Promociones</a></li>
+        <li (click)="changeActiveMenu(menuHogar);" #menuHogar><a [routerLink]="['/procesadores']">Procesadores</a></li>
+        <li (click)="changeActiveMenu(menuOficina);" #menuOficina><a [routerLink]="['/grafica']">Tarjetas de video</a></li>
+        <li (click)="changeActiveMenu(menuEscuela);" #menuEscuela><a [routerLink]="['/ram']">Memoria RAM</a></li>
+        <li (click)="changeActiveMenu(menuExt);" #menuExt><a [routerLink]="['/exteriores']">Gabinetes</a></li>
+        <li (click)="changeActiveMenu(menuExtras);" #menuExtras><a [routerLink]="['/almacenamiento']">Almacenamiento</a></li>
+        <li (click)="changeActiveMenu(menuExtras);" #menuExtras><a [routerLink]="['/fuente']">Fuente de Poder</a></li>
+      </ul>
+
+    </div>
+
+</div>

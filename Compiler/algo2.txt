@@ -1,0 +1,6 @@
+class Algo
+int algo;
+int otra;
+{
+        algo = 6 + 5;
+}

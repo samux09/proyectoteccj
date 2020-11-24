@@ -1,0 +1,14 @@
+<div id="top-header">
+  <div class="container">
+    <ul class="header-links pull-left">
+      <li><a href="tel:{{telefono}}"><i class="fa fa-phone"></i> {{telefono}}</a></li>
+      <li><a href="mailto:{{correo}}"><i class="fa fa-envelope-o"></i> {{correo}}</a></li>
+      <li><a target="_blank" href="{{direcMaps}}"><i class="fa fa-map-marker"></i> {{direccion}}</a></li>
+    </ul>
+    <ul class="header-links pull-right">
+      <li><a><i class="fa fa-dollar"></i> MXN </a></li>
+      <li *ngIf="userLogged"><a [routerLink]="['/cuenta']"><i class="fa fa-user-o"></i> {{userLogged.usuario}}</a></li>
+      <li *ngIf="!userLogged"><a [routerLink]="['/login']"><i class="fa fa-user-o"></i>Registrarme/Logearme</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div id="header">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="header-logo">
+          <a [routerLink]="['/index']" class="logo">
+            <h1 id="titulo">TechCH</h1>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="header-search">
+          <form>
+            <select class="input-select" [(ngModel)]="selectedOption" name= "input">
+              <option value="todas">Todas</option>
+              <option *ngFor="let categoria of getListaCategorias()" value ="{{categoria}}">{{categoria}}</option>
+            </select>
+            <input class="input" #palabra placeholder="Buscar un articulo.." value="">
+            <button class="search-btn" (click)="buscador(selectedOption, palabra.value)">Buscar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-3 clearfix">
+        <div class="header-ctn">
+
+          <div>
+          </div>
+          <div class="dropdown" #drop>
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" #drop2>
+              <i class="fa fa-shopping-cart" (click)="desplegar(drop, drop2);"></i>
+              <span>Carrito</span>
+              <div *ngIf="obtenerNumeroArticulos() > 0" class="qty">{{obtenerNumeroArticulos()}}</div>
+            </a>
+            <div class="cart-dropdown">
+              <div class="cart-list">
+                <div class="product-widget" *ngFor="let producto of obtenerCarrito()">
+                  <div class="product-img">
+                    <img src=".{{producto.photopath}}" alt="">
+                  </div>
+                  <div class="product-body">
+                    <h3 class="product-name"><a href="#">{{producto.nombre}}</a></h3>
+                    <h4 class="product-price"><span
+                        class="qty">{{producto.cantidad}}x</span>{{(producto.cantidad * producto.precio)*(1-producto.descuento) | currency}}
+                    </h4>
+                  </div>
+                  <button class="delete" (click)="this.carrito.eliminarArticulo(producto.idproducto)"><i
+                      class="fa fa-close"></i></button>
+                </div>
+
+              </div>
+              <div class="cart-summary">
+                <small>{{obtenerNumeroArticulos()}} articulo(s) seleccionados</small>
+                <h5>SUBTOTAL: {{obtenerSubtotal() | currency}}</h5>
+              </div>
+              <div class="cart-btns">
+                <a [routerLink]="[ '/carrito']" (click)="desplegar(drop, drop2)">Ver carrito</a>
+                <a [routerLink]="[ '/procesopago']" (click)="desplegar(drop, drop2)">Pagar <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="menu-toggle">
+            <a href="#">
+              <i class="fa fa-bars"></i>
+              <span>Menu</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

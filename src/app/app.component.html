@@ -1,0 +1,12 @@
+<body>
+  <header>
+    <app-encabezado></app-encabezado>
+    <app-busqueda></app-busqueda>
+    <app-menu *ngIf="!(router.url.includes('login') || router.url.includes('cuenta') || router.url.includes('carrito') || router.url.includes('buscador')|| router.url.includes('procesopago'))"></app-menu>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <app-siguenos></app-siguenos>
+  <app-footer></app-footer>
+</body>

@@ -1,0 +1,72 @@
+<div class="section">
+  <div class="container" [ngSwitch]="etapa">
+
+    <div class="etapa" *ngSwitchCase="'etapa1'">
+      <form id="register-form" [formGroup]="domicilioForm" (ngSubmit)="validarDomicilio()">
+        <div class="col-sm-3">
+          <h1>Paso 1:</h1>
+          <h3>Datos de envío:</h3>
+          <div class="form-group">
+              <input type="text" formControlName= "txtNombre" name="txtNombre" tabindex="1" class="form-control" placeholder="Nombre del receptor" [(ngModel)]="this.usuario.nombre" [ngClass]="{ 'is-invalid': submitted && f.txtNombre.errors }">
+              <div *ngIf="submitted && f.txtNombre.errors" class="invalid-feedback">
+                <div *ngIf="f.txtNombre.errors.required">*El nombre es obligatorio</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <input type="text" formControlName= "txtEstado" name="txtEstado" tabindex="2" class="form-control" placeholder="Estado" value="" [ngClass]="{ 'is-invalid': submitted && f.txtEstado.errors }">
+              <div *ngIf="submitted && f.txtEstado.errors" class="invalid-feedback">
+                <div *ngIf="f.txtEstado.errors.required">*El estado es obligatorio</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <input type="text" formControlName= "txtCiudad" name="txtCiudad" tabindex="3" class="form-control" placeholder="Ciudad" value="" [ngClass]="{ 'is-invalid': submitted && f.txtCiudad.errors }">
+              <div *ngIf="submitted && f.txtCiudad.errors" class="invalid-feedback">
+                <div *ngIf="f.txtCiudad.errors.required">*La ciudad es obligatorio</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <input type="text" formControlName= "txtCalle" name="txtCalle" tabindex="4" class="form-control" placeholder="Calle y número exterior" [(ngModel)]="this.usuario.domicilio" [ngClass]="{ 'is-invalid': submitted && f.txtCalle.errors }">
+              <div *ngIf="submitted && f.txtCalle.errors" class="invalid-feedback">
+                <div *ngIf="f.txtCalle.errors.required">*Calle y número exterior es obligatorio</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <input type="text" formControlName= "txtCP" name="txtCP" tabindex="5" class="form-control" placeholder="Código Postal" [(ngModel)]="this.usuario.CP" [ngClass]="{ 'is-invalid': submitted && f.txtCP.errors }">
+              <div *ngIf="submitted && f.txtCP.errors" class="invalid-feedback">
+                <div *ngIf="f.txtCP.errors.required">*El código portal es obligatorio</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <button name="register-submit" id="register-submit" tabindex="6" class="form-control btn btn-domicilio" value="domicilio">Confirmar domicilio</button>
+                </div>
+              </div>
+            </div>
+            <p><strong>Nota:</strong> Favor de verificar que todos los datos sean correctos para evitar cualquier tipo de problema en el envío.</p>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="etapa" *ngSwitchCase="'etapa2'">
+      <div class = "center">
+        <h1>Paso 2:</h1>
+        <h2>Elegir su método de pago: </h2>
+        <br>
+          <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </div>
+    </div>
+
+    <div *ngIf="this.showSuccess">
+      <div class="col-sm-3"><i class="fa fa-check-circle-o" aria-hidden="true"></i></div>
+      <h4>Su pago fue realizado correctamente, el folio de su compra es: <strong>{{this.folio}} </strong> </h4>
+      <div class="row"><p>Será entregado dentro de 3 a 4 días hábiles en el domicilio capturado. Cualquier duda o aclaración la puede hacer a nuestro número de teléfono
+        <strong>+526672609822</strong> o correo electrónico <strong>ocdelnoroeste2013@hotmail.com</strong>.
+      </p></div>
+    </div>
+
+
+  </div>
+</div>
+<notifier-container></notifier-container>
